@@ -13,12 +13,12 @@ import java.io.FileOutputStream;
 public class BitmapSaver {
 
 
-    public static File saveImageToExternalStorage(Context context, Bitmap finalBitmap) {
+    public static File saveImageToExternalStorage(Context context, Bitmap finalBitmap,Participant participant) {
         String root = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString();
         File myDir = new File(root + "/Synapse_Registrations");
         myDir.mkdirs();
         long n = System.currentTimeMillis() / 1000L;
-        String fname = "Image-" + n + ".jpg";
+        String fname = participant.getName()+"-"+participant.getEvent()+"-"+participant.getInstitute()+"-"+ n + ".jpg";
         File file = new File(myDir, fname);
         if (file.exists())
             file.delete();

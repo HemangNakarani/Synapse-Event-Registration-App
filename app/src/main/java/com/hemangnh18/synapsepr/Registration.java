@@ -352,7 +352,7 @@ public class Registration extends AppCompatActivity implements AdapterView.OnIte
 
             canvas.drawText(p_event, x_coord1, y_coord1, tPaint);
 
-            file = BitmapSaver.saveImageToExternalStorage(Registration.this, dstBitmap);
+            file = BitmapSaver.saveImageToExternalStorage(Registration.this, dstBitmap,participant);
 
             SendMail sm = new SendMail(Registration.this,participant.getEmail(),"Hello There !","Work Done Thay Gyu!!!",file,progressDialog);
             sm.execute();
