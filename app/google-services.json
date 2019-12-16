@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1032222041070",
+    "firebase_url": "https://volunteers-474eb.firebaseio.com",
+    "project_id": "volunteers-474eb",
+    "storage_bucket": "volunteers-474eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1032222041070:android:f36f77cf5551da1f8424ff",
+        "android_client_info": {
+          "package_name": "com.hemangnh18.synapsepr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1032222041070-40op61m2cq9at8hapjvgk2805mrj6n90.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hemangnh18.synapsepr",
+            "certificate_hash": "4b93be68422ff97a3b142cbc1e975aa38aa35dd0"
+          }
+        },
+        {
+          "client_id": "1032222041070-tpuq88igvibvp95herblgrhnq6h996h7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXnwWsuZ4cLMCwOoafXGRaeuJjKwSqc-Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1032222041070-tpuq88igvibvp95herblgrhnq6h996h7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
