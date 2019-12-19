@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class APIClient {
 
-    public static final String BASE_URL = "https://script.google.com/macros/s/AKfycbxnHNDZISQdlXrRK9FTLbF_cKmFMQ0pseRZsziAycYAGRtLNdg/";
+    public static final String BASE_URL = "https://script.google.com/macros/s/*********SCRIPT-KEY*********/";
     private static Retrofit retrofit = null;
 
 
