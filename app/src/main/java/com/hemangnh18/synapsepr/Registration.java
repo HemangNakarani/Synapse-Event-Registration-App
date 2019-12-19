@@ -271,7 +271,7 @@ public class Registration extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onFailure(Call<PostResponce> call, Throwable t) {
                 progressDialog.dismiss();
-                Toast.makeText(Registration.this,"Fail...",Toast.LENGTH_LONG).show();
+                Toast.makeText(Registration.this,t.getMessage().toString(),Toast.LENGTH_LONG).show();
             }
         });
 
