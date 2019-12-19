@@ -34,7 +34,6 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
-                android:background="#05000000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -71,6 +70,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
+                        android:inputType="phone"
                         android:id="@+id/phone_p"
                         android:textSize="25sp"
                         android:textStyle="bold" />
@@ -89,6 +89,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
+                        android:inputType="phone"
                         android:id="@+id/alt_phone_p"
                         android:textSize="25sp"
                         android:textStyle="bold" />
@@ -107,6 +108,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="#000"
+                        android:inputType="textEmailAddress"
                         android:id="@+id/email_p"
                         android:textSize="25sp"
                         android:textStyle="bold" />

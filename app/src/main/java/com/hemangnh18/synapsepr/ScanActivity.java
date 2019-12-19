@@ -50,7 +50,7 @@ public class ScanActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Hey ! You are Scanner. 😁");
+        getSupportActionBar().setTitle("Hey! Scan here😁");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,9 +1,11 @@
 package com.hemangnh18.synapsepr;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.KeyguardManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -50,10 +52,9 @@ import retrofit2.Response;
 
 public class Registration extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-
     Spinner spinner;
-    ImageView img;
     ProgressDialog progressDialog ;
+    private static int AUTHENTICATE = 500;
     SharedPreferences sharedPreferences;
     EditText name,number,alt_number,email,institute,city,total_members;
     String event="",teamis="",total_teammembers,code;
@@ -112,10 +113,7 @@ public class Registration extends AppCompatActivity implements AdapterView.OnIte
                             alt_number.setText(number.getText().toString());
                         }
 
-                        Participant participant = new Participant(name.getText().toString(),number.getText().toString(),alt_number.getText().toString(),email.getText().toString(),institute.getText() .toString(),city.getText().toString(),teamis,total_teammembers,sharedPreferences.getString("username",""),event,"");
-                        Post(participant);
-
-                        Clear();
+                        Authenticate();
                     }
 
                 }
@@ -354,15 +352,52 @@ public class Registration extends AppCompatActivity implements AdapterView.OnIte
 
             file = BitmapSaver.saveImageToExternalStorage(Registration.this, dstBitmap,participant);
 
-            SendMail sm = new SendMail(Registration.this,participant.getEmail(),"Hello There !","Work Done Thay Gyu!!!",file,progressDialog);
+            progressDialog.dismiss();
+            SendMail sm = new SendMail(Registration.this,participant.getEmail(),"Registration Successfull for " + participant.getEvent()+":Synapse '20" ,"Hello "+ participant.getName()+ " !!\n\n            Thank You for participating in Synapse'20. At the time of event you have to show your QRcode(atteched with this mail) to the respected coordinators group on place of event.They will scan it and confirm your participation. \n\nCheers !!!\nTeam Synapse'20.",file);
             sm.execute();
 
         } catch (Exception e) {
+
             progressDialog.dismiss();
             System.out.println(e);
+
         }
 
     }
+
+
+    void Authenticate()
+    {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            KeyguardManager km = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
+
+            if (km.isKeyguardSecure()) {
+                Intent authIntent = km.createConfirmDeviceCredentialIntent("Confirm Here!!.", "DAIICT !");
+                startActivityForResult(authIntent, AUTHENTICATE);
+            }
+        }
+    }
+
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == AUTHENTICATE) {
+            if (resultCode == RESULT_OK) {
+
+                Participant participant = new Participant(name.getText().toString(),number.getText().toString(),alt_number.getText().toString(),email.getText().toString(),institute.getText() .toString(),city.getText().toString(),teamis,total_teammembers,sharedPreferences.getString("username",""),event,"");
+                Post(participant);
+                Clear();
+
+            }
+            else
+            {
+                Toast.makeText(Registration.this,"Confirm Registration from Volunteer.",Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -418,4 +453,5 @@ public class Registration extends AppCompatActivity implements AdapterView.OnIte
         AlertDialog alert = builder.create();
         alert.show();
     }
+
 }
